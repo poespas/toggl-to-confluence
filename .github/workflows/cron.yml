@@ -31,6 +31,7 @@ jobs:
           CONFLUENCE_PARENT_PAGE_ID: "${{ fromJSON(secrets.CHANNEL_1).CONFLUENCE_PARENT_PAGE_ID }}"
           PROJECT_ID: "${{ fromJSON(secrets.CHANNEL_1).PROJECT_ID }}"
           WORKSPACE_ID: "${{ fromJSON(secrets.CHANNEL_1).WORKSPACE_ID }}"
+          SUFFIX: "${{ fromJSON(secrets.CHANNEL_1).SUFFIX }}"
 
   channel-two:
     runs-on: ubuntu-latest
@@ -56,6 +57,7 @@ jobs:
           CONFLUENCE_PARENT_PAGE_ID: "${{ fromJSON(secrets.CHANNEL_2).CONFLUENCE_PARENT_PAGE_ID }}"
           PROJECT_ID: "${{ fromJSON(secrets.CHANNEL_2).PROJECT_ID }}"
           WORKSPACE_ID: "${{ fromJSON(secrets.CHANNEL_2).WORKSPACE_ID }}"
+          SUFFIX: "${{ fromJSON(secrets.CHANNEL_2).SUFFIX }}"
 
   channel-three:
     runs-on: ubuntu-latest
@@ -81,3 +83,4 @@ jobs:
           CONFLUENCE_PARENT_PAGE_ID: "${{ fromJSON(secrets.CHANNEL_3).CONFLUENCE_PARENT_PAGE_ID }}"
           PROJECT_ID: "${{ fromJSON(secrets.CHANNEL_3).PROJECT_ID }}"
           WORKSPACE_ID: "${{ fromJSON(secrets.CHANNEL_3).WORKSPACE_ID }}"
+          SUFFIX: "${{ fromJSON(secrets.CHANNEL_3).SUFFIX }}"
