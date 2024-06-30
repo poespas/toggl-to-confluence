@@ -15,7 +15,7 @@ CONFLUENCE_SPACE_KEY = os.getenv('CONFLUENCE_SPACE_KEY')
 CONFLUENCE_PARENT_PAGE_ID = os.getenv('CONFLUENCE_PARENT_PAGE_ID')
 PROJECT_ID = os.getenv('PROJECT_ID')
 WORKSPACE_ID = os.getenv('WORKSPACE_ID')
-SUFFIX = os.getenv('SUFFIX')
+SUFFIX = os.getenv('SUFFIX', '')
 
 # Initialize Toggl API
 toggl = Toggl()
