@@ -1,0 +1,22 @@
+name: Run channels
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  channel-one:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install APT Dependancies
+        run: apk add --update git bash python3 py3-pip sshpass
+
+      - name: Install Python Depdenancies
+        run: pip install -r requirements.txt
+
+      - name: TODO - Secrets test
+        run: echo "{{ fromJSON(secrets.CHANNEL_1).test }}"
