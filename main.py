@@ -125,7 +125,7 @@ def main():
     
     # Create or update Confluence page
     page_title = f"{first_day_of_month.strftime('%B %Y')} - Time report {SUFFIX}"
-    page_title = strip(page_title)
+    page_title = page_title.strip()
     create_or_update_confluence_page(CONFLUENCE_SPACE_KEY, page_title, html_table, CONFLUENCE_PARENT_PAGE_ID)
     
     print(f"Confluence page created or updated successfully.")
