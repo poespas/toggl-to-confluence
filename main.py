@@ -124,7 +124,7 @@ def main():
     html_table = f"Time registered in time logging between {first_day_of_month.strftime('%d %B %Y')} and {last_day_of_month.strftime('%d %B %Y')}. <br /> <br /> {generate_html_table(formatted_rows)}"
     
     # Create or update Confluence page
-    page_title = f"{first_day_of_month.strftime('%B %Y')} - Time report " + SUFFIX
+    page_title = f"{first_day_of_month.strftime('%B %Y')} - Time report {SUFFIX}"
     create_or_update_confluence_page(CONFLUENCE_SPACE_KEY, page_title, html_table, CONFLUENCE_PARENT_PAGE_ID)
     
     print(f"Confluence page created or updated successfully.")
