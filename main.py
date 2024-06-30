@@ -15,6 +15,7 @@ CONFLUENCE_SPACE_KEY = os.getenv('CONFLUENCE_SPACE_KEY')
 CONFLUENCE_PARENT_PAGE_ID = os.getenv('CONFLUENCE_PARENT_PAGE_ID')
 PROJECT_ID = os.getenv('PROJECT_ID')
 WORKSPACE_ID = os.getenv('WORKSPACE_ID')
+SUFFIX = os.getenv('SUFFIX')
 
 # Initialize Toggl API
 toggl = Toggl()
@@ -123,10 +124,10 @@ def main():
     html_table = f"Time registered in time logging between {first_day_of_month.strftime('%d %B %Y')} and {last_day_of_month.strftime('%d %B %Y')}. <br /> <br /> {generate_html_table(formatted_rows)}"
     
     # Create or update Confluence page
-    page_title = f"{first_day_of_month.strftime('%B %Y')} - Time report"
+    page_title = f"{first_day_of_month.strftime('%B %Y')} - Time report " + SUFFIX
     create_or_update_confluence_page(CONFLUENCE_SPACE_KEY, page_title, html_table, CONFLUENCE_PARENT_PAGE_ID)
     
-    print(f"Confluence page '{page_title}' created or updated successfully.")
+    print(f"Confluence page created or updated successfully.")
 
 if __name__ == "__main__":
     main()
