@@ -23,4 +23,11 @@ jobs:
       - name: Run application
         run: python3 main.py
         env:
-          TOGGL_API_TOKEN: "${{ fromJSON(secrets.CHANNEL_1).test }}"
+          TOGGL_API_TOKEN: "${{ fromJSON(secrets.CHANNEL_1).TOGGL_API_TOKEN }}"
+          CONFLUENCE_URL: "${{ fromJSON(secrets.CHANNEL_1).CONFLUENCE_URL }}"
+          CONFLUENCE_USERNAME: "${{ fromJSON(secrets.CHANNEL_1).CONFLUENCE_USERNAME }}"
+          CONFLUENCE_API_TOKEN: "${{ fromJSON(secrets.CHANNEL_1).CONFLUENCE_API_TOKEN }}"
+          CONFLUENCE_SPACE_KEY: "${{ fromJSON(secrets.CHANNEL_1).CONFLUENCE_SPACE_KEY }}"
+          CONFLUENCE_PARENT_PAGE_ID: "${{ fromJSON(secrets.CHANNEL_1).CONFLUENCE_PARENT_PAGE_ID }}"
+          PROJECT_ID: "${{ fromJSON(secrets.CHANNEL_1).PROJECT_ID }}"
+          WORKSPACE_ID: "${{ fromJSON(secrets.CHANNEL_1).WORKSPACE_ID }}"
