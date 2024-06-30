@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install APT Dependancies
-        run: apt update && apt install git bash python3 python3-pip sshpass -y
+        run: sudo apt update && sudo apt install git bash python3 python3-pip sshpass -y
 
       - name: Install Python Depdenancies
         run: pip install -r requirements.txt
