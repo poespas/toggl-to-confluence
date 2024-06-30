@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 3 * * *'
   workflow_dispatch:
+  push:
 
 jobs:
   channel-one:
@@ -19,5 +20,7 @@ jobs:
       - name: Install Python Depdenancies
         run: pip install -r requirements.txt
 
-      - name: TODO - Secrets test
-        run: echo "${{ fromJSON(secrets.CHANNEL_1).test }}"
+      - name: Run application
+        run: python3 main.py
+        env:
+          TOGGL_API_TOKEN: "${{ fromJSON(secrets.CHANNEL_1).test }}"
