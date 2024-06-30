@@ -20,4 +20,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: TODO - Secrets test
-        run: echo "{{ fromJSON(secrets.CHANNEL_1).test }}"
+        run: echo "${{ fromJSON(secrets.CHANNEL_1).test }}"
