@@ -13,7 +13,7 @@ CONFLUENCE_USERNAME = os.getenv('CONFLUENCE_USERNAME')
 CONFLUENCE_API_TOKEN = os.getenv('CONFLUENCE_API_TOKEN')
 CONFLUENCE_SPACE_KEY = os.getenv('CONFLUENCE_SPACE_KEY')
 CONFLUENCE_PARENT_PAGE_ID = os.getenv('CONFLUENCE_PARENT_PAGE_ID')
-PROJECT_ID = os.getenv('PROJECT_ID')
+CLIENT_ID = os.getenv('CLIENT_ID')
 WORKSPACE_ID = os.getenv('WORKSPACE_ID')
 SUFFIX = os.getenv('SUFFIX', '')
 
@@ -28,11 +28,11 @@ confluence = Confluence(
     password=CONFLUENCE_API_TOKEN
 )
 
-def get_toggl_time_entries(project_id, start_date, end_date, workspace_id):
+def get_toggl_time_entries(client_id, start_date, end_date, workspace_id):
     params = {
         'user_agent': 'Poespas/ToggleToConfluence/1.0.0',
         'workspace_id': workspace_id,
-        'project_ids': project_id,
+        'client_ids': project_id,
         'since': start_date.isoformat(),
         'until': end_date.isoformat()
     }
@@ -117,7 +117,7 @@ def main():
     last_day_of_month = (first_day_of_month + datetime.timedelta(days=32)).replace(day=1) - datetime.timedelta(days=1)
     
     # Retrieve time entries from Toggl
-    time_entries = get_toggl_time_entries(PROJECT_ID, first_day_of_month, last_day_of_month, WORKSPACE_ID)
+    time_entries = get_toggl_time_entries(CLIENT_ID, first_day_of_month, last_day_of_month, WORKSPACE_ID)
     
     # Format time entries into HTML table
     formatted_rows = format_time_entries(time_entries)
