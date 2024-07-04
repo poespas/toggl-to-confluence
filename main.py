@@ -32,7 +32,7 @@ def get_toggl_time_entries(client_id, start_date, end_date, workspace_id):
     params = {
         'user_agent': 'Poespas/ToggleToConfluence/1.0.0',
         'workspace_id': workspace_id,
-        'client_ids': project_id,
+        'client_ids': client_id,
         'since': start_date.isoformat(),
         'until': end_date.isoformat()
     }
