@@ -58,11 +58,12 @@ def format_time_entries(time_entries):
         hours = entry['dur'] / 1000 / 60 / 60
         total_hours += hours
         description = entry.get('description', 'No Description')
+        project = entry.get('project', '???')
         
-        table_rows.append([date, begin_time, end_time, f"{hours:.2f}", description])
+        table_rows.append([date, begin_time, end_time, project, f"{hours:.2f}", description])
     
     # Total hours row
-    total_row = ["", "", "", f"Total Hours: {total_hours:.2f}", ""]
+    total_row = ["", "", "", "", f"Total Hours: {total_hours:.2f}", ""]
     table_rows.append(total_row)
     
     return table_rows
@@ -87,6 +88,7 @@ def generate_html_table(rows):
                 <th><p><strong>Date</strong></p></th>
                 <th><p><strong>Begin Time</strong></p></th>
                 <th><p><strong>End Time</strong></p></th>
+                <th><p><strong>Project</strong></p></th>
                 <th><p><strong>Total Hours</strong></p></th>
                 <th><p><strong>Task Description</strong></p></th>
             </tr>
@@ -95,6 +97,7 @@ def generate_html_table(rows):
     for row in rows:
         table_html += """
             <tr>
+                <td><p>{}</p></td>
                 <td><p>{}</p></td>
                 <td><p>{}</p></td>
                 <td><p>{}</p></td>
