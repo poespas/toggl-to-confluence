@@ -84,3 +84,29 @@ jobs:
           CLIENT_ID: "${{ fromJSON(secrets.CHANNEL_3).CLIENT_ID }}"
           WORKSPACE_ID: "${{ fromJSON(secrets.CHANNEL_3).WORKSPACE_ID }}"
           SUFFIX: "${{ fromJSON(secrets.CHANNEL_3).SUFFIX }}"
+
+  channel-four:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install APT Dependancies
+        run: sudo apt update && sudo apt install git bash python3 python3-pip sshpass -y
+
+      - name: Install Python Depdenancies
+        run: pip install -r requirements.txt
+
+      - name: Run application
+        run: python3 main.py
+        env:
+          TOGGL_API_TOKEN: "${{ fromJSON(secrets.CHANNEL_4).TOGGL_API_TOKEN }}"
+          CONFLUENCE_URL: "${{ fromJSON(secrets.CHANNEL_4).CONFLUENCE_URL }}"
+          CONFLUENCE_USERNAME: "${{ fromJSON(secrets.CHANNEL_4).CONFLUENCE_USERNAME }}"
+          CONFLUENCE_API_TOKEN: "${{ fromJSON(secrets.CHANNEL_4).CONFLUENCE_API_TOKEN }}"
+          CONFLUENCE_SPACE_KEY: "${{ fromJSON(secrets.CHANNEL_4).CONFLUENCE_SPACE_KEY }}"
+          CONFLUENCE_PARENT_PAGE_ID: "${{ fromJSON(secrets.CHANNEL_4).CONFLUENCE_PARENT_PAGE_ID }}"
+          CLIENT_ID: "${{ fromJSON(secrets.CHANNEL_4).CLIENT_ID }}"
+          WORKSPACE_ID: "${{ fromJSON(secrets.CHANNEL_4).WORKSPACE_ID }}"
+          SUFFIX: "${{ fromJSON(secrets.CHANNEL_4).SUFFIX }}"
