@@ -115,19 +115,19 @@ def generate_html_table(rows):
 
 def main():
     now = datetime.datetime.now()
-    yesterday = now - datetime.timedelta(days=1)
-    first_day_of_month = yesterday.replace(day=1, hour=1)
-    last_day_of_month = (first_day_of_month + datetime.timedelta(days=32)).replace(day=1) - datetime.timedelta(days=1)
+    first_day_of_month = now.replace(day=1, hour=1)
+    last_day_of_previous_month = first_day_of_month - datetime.timedelta(days=1)
+    first_day_of_previous_month = last_day_of_previous_month.replace(day=1)
     
     # Retrieve time entries from Toggl
-    time_entries = get_toggl_time_entries(CLIENT_ID, first_day_of_month, last_day_of_month, WORKSPACE_ID)
+    time_entries = get_toggl_time_entries(CLIENT_ID, first_day_of_previous_month, last_day_of_previous_month, WORKSPACE_ID)
     
     # Format time entries into HTML table
     formatted_rows = format_time_entries(time_entries)
-    html_table = f"Time registered in time logging between {first_day_of_month.strftime('%d %B %Y')} and {last_day_of_month.strftime('%d %B %Y')}. <br /> <br /> {generate_html_table(formatted_rows)}"
+    html_table = f"Time registered in time logging between {first_day_of_previous_month.strftime('%d %B %Y')} and {last_day_of_previous_month.strftime('%d %B %Y')}. <br /> <br /> {generate_html_table(formatted_rows)}"
     
     # Create or update Confluence page
-    page_title = f"{first_day_of_month.strftime('%B %Y')} - Time report {SUFFIX}"
+    page_title = f"{first_day_of_previous_month.strftime('%B %Y')} - Time report {SUFFIX}"
     page_title = page_title.strip()
     create_or_update_confluence_page(CONFLUENCE_SPACE_KEY, page_title, html_table, CONFLUENCE_PARENT_PAGE_ID)
     
